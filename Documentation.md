@@ -55,9 +55,9 @@ Hive is used to query and analyze the structured data stored in HDFS.
 A MapReduce job is used to calculate the average age of patients.
 
 1.  **Upload Files to HDFS**:
-    *   Upload the mapper script: `hdfs dfs -put /path/to/your/repo/MapReduce_Average_Age/mapper.py /user/hduser/mapper.py`
-    *   Upload the reducer script: `hdfs dfs -put /path/to/your/repo/MapReduce_Average_Age/reducer.py /user/hduser/reducer.py`
-    *   Upload the patients data file: `hdfs dfs -put /path/to/your/repo/Data/patients.csv /user/hduser/patients.csv`
+    *   Upload the mapper script: `hdfs dfs -put /path/to/your/repo/MapReduce/mapper.py /user/hduser/mapper.py`
+    *   Upload the reducer script: `hdfs dfs -put /path/to/your/repo/MapReduce/reducer.py /user/hduser/reducer.py`
+    *   Upload the patients data file: `hdfs dfs -put /path/to/your/repo/data/patients.csv /user/hduser/patients.csv`
     *(Refer to `README.md` for the correct local paths to these files)*
 
 2.  **Run the MapReduce Job**:
@@ -120,7 +120,6 @@ For the complete list of queries and their specific implementations, please refe
 
 ## Table Creation Script (`hive_queries/five_tables_creation_hive.sql`)
 
-The `hive_queries/five_tables_creation_hive.sql` script contains the HiveQL Data Definition Language (DDL) statements required to create the necessary tables within the Hive database (typically within a database like `projectfinaltest` or similar, depending on setup).
-This script defines the schema for each table (e.g., `patients`, `admissions`, `diagnoses_icd`, `d_icd_diagnoses`, `icustays`), specifying column names, data types, and how the tables map to the underlying Parquet data files stored in HDFS.
+The `hive_queries/five_tables_creation_hive.sql` script contains the HiveQL Data Definition Language (DDL) statements required to create the necessary external tables within the Hive database. These tables map to the MIMIC-III dataset (in Parquet format) stored in HDFS. The script defines the schema for each table (e.g., `patients`, `admissions`, `diagnoses_icd`, `d_icd_diagnoses`, `icustays`), specifying column names, data types, and their corresponding HDFS data locations.
 
 To understand the exact table structures and their HDFS locations, please consult the `hive_queries/five_tables_creation_hive.sql` file. This script is crucial for setting up the Hive environment before any analytical queries can be executed.
