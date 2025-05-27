@@ -2,6 +2,7 @@
 
 ## 🚀 Overview
 This project analyzes healthcare data using Apache Hive and MapReduce inside Docker.
+●Dataset: MIMIC-III Clinical Database. (https://physionet.org/content/mimiciii-demo/1.4/)
 
 ## 🧱 Prerequisites
 
@@ -14,12 +15,12 @@ This project analyzes healthcare data using Apache Hive and MapReduce inside Doc
    `git clone https://github.com/Heba-Magdyy/mimic-docker-hive-project.git`
 2. Clone this repo to use Docker Compose Repo:
    `git clone https://github.com/Marcel-Jan/docker-hadoop-spark`
-   -To start the docker container make sure you are inside the dir(docker-hadoop-spark)
-        `cd docker-hadoop-spark` and run
+   -To start the docker container make sure you are inside the dir(docker-hadoop-spark) and run
+        `cd docker-hadoop-spark`
         `docker-compose up -d`
 
 3. Open cmd and run
-    docker 'cp path/of/data/from mimic-docker-hive-project namenode:/data'
+    docker cp path/of/data/from mimic-docker-hive-project namenode:/
     "This will copy the folder from your device to container"
 
    -To run the container:
@@ -63,5 +64,6 @@ This project analyzes healthcare data using Apache Hive and MapReduce inside Doc
   -file /data/reducer.py`
 
  -To check the output:
-    `hdfs dfs -cat /user/hduser/output/avg-age/part-00000`
+    `hdfs dfs -cat /user/output/avg-age/part-00000`
+
 
