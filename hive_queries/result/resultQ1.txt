@@ -1,0 +1,30 @@
+Ac DVT/emb prox low ext	123.98	1
+Hypercalcemia	123.98	1
+Corneal ulcer NOS	123.98	1
+Drug induced neutropenia	123.98	1
+Orchitis/epididymit NOS	123.98	1
+Osteoarthrosis-mult site	123.98	1
+Neutropenia NOS	123.98	1
+Mucosits d/t antineo rx	123.98	1
+Bronchiectas w/o ac exac	123.98	1
+Hydrocele NOS	123.98	1
+Lack of housing	123.98	1
+Pneu mycplsm pneumoniae	123.98	1
+Tumor lysis syndrome	123.98	1
+Aplastic anemias NEC	123.98	1
+Bell's palsy	123.98	1
+Crit illness neuropathy	123.98	1
+Ac embl suprfcl up ext	123.98	1
+Meth res pneu d/t Staph	66.46	2
+Brkt tmr unsp xtrndl org	65.5	2
+Acromegaly and gigantism	65.5	2
+Constipation NEC	65.5	2
+Dis phosphorus metabol	65.5	2
+Mixed acid-base bal dis	64.53	2
+Iatrogenic pneumothorax	61.33	3
+Tachycardia NOS	48.39	3
+Abn react-artif implant	48.24	3
+Retention urine NOS	47.61	3
+Benign neo pituitary	46.98	3
+Pressure ulcer, stage IV	46.54	3
+Adv eff antineoplastic	45.37	3

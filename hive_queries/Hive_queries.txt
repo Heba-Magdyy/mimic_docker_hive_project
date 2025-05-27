@@ -1,0 +1,80 @@
+▪Average length of stay per diagnosis.
+
+
+SELECT
+  dd.short_title AS diagnosis,
+  ROUND(AVG(UNIX_TIMESTAMP(CAST(a.dischtime AS STRING)) - UNIX_TIMESTAMP(CAST(a.admittime AS STRING))) / 86400, 2) AS avg_los_days,
+  COUNT(*) AS num_patients
+FROM admissions a
+JOIN diagnoses_icd d ON a.hadm_id = d.hadm_id
+JOIN d_icd_diagnoses dd ON d.icd9_code = dd.icd9_code
+GROUP BY dd.short_title
+ORDER BY avg_los_days DESC
+LIMIT 30;
+
+
+###################################################################
+▪Distribution of ICU readmissions.
+
+
+SELECT
+  CASE
+    WHEN icu_stays = 1 THEN '1 stay'
+    WHEN icu_stays = 2 THEN '2 stays'
+    WHEN icu_stays >= 3 THEN '3+ stays'
+  END AS readmission_group,
+  COUNT(*) AS patient_count
+FROM (
+  SELECT subject_id, COUNT(*) AS icu_stays
+  FROM icustays
+  GROUP BY subject_id
+) t
+GROUP BY
+  CASE
+    WHEN icu_stays = 1 THEN '1 stay'
+    WHEN icu_stays = 2 THEN '2 stays'
+    WHEN icu_stays >= 3 THEN '3+ stays'
+  END;
+
+
+
+###################################################################
+▪Mortality rates by demographic groups.
+
+
+WITH patient_age AS (
+    SELECT 
+        p.subject_id,
+        p.gender,
+        FLOOR(DATEDIFF(a.admittime, p.dob) / 365.25) AS age,
+        a.deathtime
+    FROM 
+        patients p
+    JOIN 
+        admissions a ON p.subject_id = a.subject_id
+),
+age_groups AS (
+    SELECT *,
+        CASE
+            WHEN age < 18 THEN '0-17'
+            WHEN age BETWEEN 18 AND 39 THEN '18-39'
+            WHEN age BETWEEN 40 AND 64 THEN '40-64'
+            WHEN age BETWEEN 65 AND 79 THEN '65-79'
+            ELSE '80+'
+        END AS age_group
+    FROM 
+        patient_age
+)
+SELECT 
+    gender,
+    age_group,
+    COUNT(*) AS total_admissions,
+    SUM(CASE WHEN deathtime IS NOT NULL THEN 1 ELSE 0 END) AS num_deaths,
+    ROUND(SUM(CASE WHEN deathtime IS NOT NULL THEN 1 ELSE 0 END) / COUNT(*) * 100, 2) AS mortality_rate_pct
+FROM 
+    age_groups
+GROUP BY 
+    gender, age_group
+ORDER BY 
+    gender, age_group;
+
