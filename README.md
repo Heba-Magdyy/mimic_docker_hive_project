@@ -12,7 +12,7 @@ This project analyzes healthcare data using Apache Hive and MapReduce inside Doc
 ## 🔧 Setup Instructions
 
 1. Clone my repo:
-   `git clone https://github.com/Heba-Magdyy/mimic-docker-hive-project.git`
+   `git clone https://github.com/Heba-Magdyy/mimic_docker_hive_project.git`
 2. Clone this repo to use Docker Compose Repo:
    `git clone https://github.com/Marcel-Jan/docker-hadoop-spark`
    -To start the docker container make sure you are inside the dir(docker-hadoop-spark) and run
