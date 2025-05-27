@@ -63,5 +63,5 @@ This project analyzes healthcare data using Apache Hive and MapReduce inside Doc
   -file /data/reducer.py`
 
  -To check the output:
-    `hdfs dfs -cat /user/hduser/output/avg-age/part-00000`
+    `hdfs dfs -cat /user/output/avg-age/part-00000`
 
