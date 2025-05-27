@@ -2,6 +2,7 @@
 
 ## 🚀 Overview
 This project analyzes healthcare data using Apache Hive and MapReduce inside Docker.
+●Dataset: MIMIC-III Clinical Database. (https://physionet.org/content/mimiciii-demo/1.4/)
 
 ## 🧱 Prerequisites
 
